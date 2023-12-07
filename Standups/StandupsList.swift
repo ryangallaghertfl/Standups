@@ -49,7 +49,9 @@ struct StandupsListView: View {
             .navigationTitle("Daily Standups")
             .toolbar {
                 ToolbarItem {
-                    Button("Add"){}
+                    Button("Add"){
+                        viewStore.send(.addButtonTapped)
+                    }
                 }
             }
         }
