@@ -101,9 +101,17 @@ struct StandupsListView: View {
     }
 
 #Preview {
-    MainActor.assumeIsolated {
-        NavigationStack {
-            StandupsListView()
+  MainActor.assumeIsolated {
+    NavigationStack {
+      StandupsListView(
+        store: Store(
+          initialState: StandupsListFeature.State(
+            standups: [.mock]
+          )
+        ) {
+          StandupsListFeature()
         }
+      )
     }
+  }
 }
