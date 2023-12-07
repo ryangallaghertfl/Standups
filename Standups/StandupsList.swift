@@ -35,9 +35,15 @@ struct StandupsListFeature: Reducer {
 
 
 struct StandupsListView: View {
+    let store: StoreOf<StandupsListFeature>
+    
     var body: some View {
-        List {
-        }
+        //only observing standups from the store
+        WithViewStore(self.store, observe: \.standups) { viewStore in
+              List {
+                ForEach(viewStore.state) { standup in
+                }
+              }
         .navigationTitle("Daily Standups")
         .toolbar {
             ToolbarItem {
