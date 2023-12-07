@@ -6,6 +6,24 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
+
+struct StandupsListFeature: Reducer {
+  struct State {
+    
+  }
+  enum Action {
+  
+  }
+  var body: some ReducerOf<Self> {
+    Reduce { state, action in
+      switch action {
+
+      }
+    }
+  }
+}
+
 
 struct StandupsListView: View {
     var body: some View {
