@@ -16,6 +16,7 @@
 		A157CBAE2B20E064004D212D /* StandupsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A157CBAD2B20E064004D212D /* StandupsUITestsLaunchTests.swift */; };
 		A157CBBC2B20E125004D212D /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = A157CBBB2B20E125004D212D /* ComposableArchitecture */; };
 		A157CBBE2B20E1DC004D212D /* StandupsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A157CBBD2B20E1DC004D212D /* StandupsList.swift */; };
+		A157CBC02B2212EE004D212D /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = A157CBBF2B2212EE004D212D /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		A157CBAB2B20E064004D212D /* StandupsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandupsUITests.swift; sourceTree = "<group>"; };
 		A157CBAD2B20E064004D212D /* StandupsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandupsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A157CBBD2B20E1DC004D212D /* StandupsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandupsList.swift; sourceTree = "<group>"; };
+		A157CBBF2B2212EE004D212D /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				A157CB942B20E064004D212D /* Assets.xcassets */,
 				A157CB962B20E064004D212D /* Preview Content */,
 				A157CBBD2B20E1DC004D212D /* StandupsList.swift */,
+				A157CBBF2B2212EE004D212D /* Models.swift */,
 			);
 			path = Standups;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				A157CB932B20E063004D212D /* ContentView.swift in Sources */,
 				A157CBBE2B20E1DC004D212D /* StandupsList.swift in Sources */,
 				A157CB912B20E063004D212D /* StandupsApp.swift in Sources */,
+				A157CBC02B2212EE004D212D /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
