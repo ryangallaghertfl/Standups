@@ -41,9 +41,11 @@ struct StandupsListView: View {
         //only observing standups from the store
         WithViewStore(self.store, observe: \.standups) { viewStore in
             List {
-                ForEach(viewStore.state) { standup in
-                }
-            }
+                    ForEach(viewStore.state) { standup in
+                      CardView(standup: standup)
+                        .listRowBackground(standup.theme.mainColor)
+                    }
+                  }
             .navigationTitle("Daily Standups")
             .toolbar {
                 ToolbarItem {
