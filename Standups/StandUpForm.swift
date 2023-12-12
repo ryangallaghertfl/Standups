@@ -63,35 +63,37 @@ struct StandupFormFeature: Reducer {
 struct StandupFormView: View {
     let store: StoreOf<StandupFormFeature>
     var body: some View {
-        Form {
-            Section {
-                TextField("Title", text: "")
-                HStack {
-                    Slider(value: 5, in: 5...30, step: 1) {
-                        Text("Length")
+        WithViewStore(self.store, observe: {$0}) { ViewStore in
+            Form {
+                Section {
+                    TextField("Title", text: "")
+                    HStack {
+                        Slider(value: 5, in: 5...30, step: 1) {
+                            Text("Length")
+                        }
+                        Spacer()
+                        Text("5 min")
                     }
-                    Spacer()
-                    Text("5 min")
+                    ThemePicker(selection: .bubblegum)
+                } header: {
+                    Text("Standup Info")
                 }
-        ThemePicker(selection: .bubblegum)
-      } header: {
-        Text("Standup Info")
-      }
-      Section {
-          ForEach(Attendee) { $attendee in
-          TextField("Name", text: $attendee.name)
+                Section {
+                    ForEach(Attendee) { $attendee in
+                        TextField("Name", text: $attendee.name)
+                    }
+                    .onDelete { indices in
+                        //Do something
+                    }
+                    
+                    Button("Add attendee") {
+                        //Do something
+                    }
+                } header: {
+                    Text("Attendees")
+                }
+            }
         }
-        .onDelete { indices in
-          //Do something
-        }
-
-        Button("Add attendee") {
-          //Do something
-        }
-      } header: {
-        Text("Attendees")
-      }
-    }
   }
 }
 
