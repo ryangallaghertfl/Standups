@@ -10,7 +10,13 @@ import SwiftUI
 
 struct StandupFormFeature: Reducer {
   struct State {
+      var focus: Field?
       var standup: Standup
+      
+      enum Field: Hashable {
+          case attendee(Attendee.ID)
+          case title
+      }
   }
   enum Action {
   }
