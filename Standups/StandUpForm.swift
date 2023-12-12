@@ -63,12 +63,12 @@ struct StandupFormFeature: Reducer {
 struct StandupFormView: View {
     let store: StoreOf<StandupFormFeature>
     var body: some View {
-        WithViewStore(self.store, observe: {$0}) { ViewStore in
+        WithViewStore(self.store, observe: {$0}) { viewStore in
             Form {
                 Section {
-                    TextField("Title", text: "")
+                    TextField("Title", text: viewStore.$standup.title)
                     HStack {
-                        Slider(value: 5, in: 5...30, step: 1) {
+                        Slider(value: viewStore.$standup.duration, in: 5...30, step: 1) {
                             Text("Length")
                         }
                         Spacer()
@@ -94,6 +94,13 @@ struct StandupFormView: View {
                 }
             }
         }
+  }
+}
+
+extension Duration {
+  fileprivate var minutes: Double {
+    get { Double(self.components.seconds / 60) }
+    set { self = .seconds(newValue * 60) }
   }
 }
 
