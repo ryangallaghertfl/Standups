@@ -37,7 +37,8 @@ struct StandupFormFeature: Reducer {
       Reduce { state, action in
           switch action {
           case .addAttendeeButtonTapped:
-              <#code#>
+              state.standup.attendees.append(Attendee(id: UUID()))
+              return .none
           case .binding(_):
               return .none
           case .deleteAttendees(atOffsets: let atOffsets):
