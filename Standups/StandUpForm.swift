@@ -17,6 +17,14 @@ struct StandupFormFeature: Reducer {
           case attendee(Attendee.ID)
           case title
       }
+      
+      init(focus: Field? = nil, standup: Standup) {
+          self.focus = focus
+          self.standup = standup
+          if self.standup.attendees.isEmpty {
+              self.standup.attendees.append(Attendee(id: UUID()))
+          }
+      }
   }
   enum Action {
   }
