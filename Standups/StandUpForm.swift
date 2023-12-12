@@ -8,6 +8,19 @@
 import ComposableArchitecture
 import SwiftUI
 
+struct StandupFormFeature: Reducer {
+  struct State {
+  }
+  enum Action {
+  }
+  var body: some ReducerOf<Self> {
+    Reduce { state, action in
+      switch action {
+      }
+    }
+  }
+}
+
 struct StandupFormView: View {
   var body: some View {
     Form {
@@ -25,7 +38,7 @@ struct StandupFormView: View {
         Text("Standup Info")
       }
       Section {
-          ForEach(attendees) { $attendee in
+          ForEach(Attendee) { $attendee in
           TextField("Name", text: $attendee.name)
         }
         .onDelete { indices in
