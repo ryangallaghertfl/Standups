@@ -10,6 +10,7 @@ import SwiftUI
 
 struct StandupFormFeature: Reducer {
   struct State {
+      var standup: Standup
   }
   enum Action {
   }
