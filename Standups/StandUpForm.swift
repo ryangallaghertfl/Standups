@@ -61,17 +61,18 @@ struct StandupFormFeature: Reducer {
 }
 
 struct StandupFormView: View {
-  var body: some View {
-    Form {
-      Section {
-        TextField("Title", text: "")
-        HStack {
-          Slider(value: 5, in: 5...30, step: 1) {
-            Text("Length")
-          }
-          Spacer()
-          Text("5 min")
-        }
+    let store: StoreOf<StandupFormFeature>
+    var body: some View {
+        Form {
+            Section {
+                TextField("Title", text: "")
+                HStack {
+                    Slider(value: 5, in: 5...30, step: 1) {
+                        Text("Length")
+                    }
+                    Spacer()
+                    Text("5 min")
+                }
         ThemePicker(selection: .bubblegum)
       } header: {
         Text("Standup Info")
@@ -115,9 +116,12 @@ struct ThemePicker: View {
 }
 
 #Preview {
-  MainActor.assumeIsolated {
-    NavigationStack {
-      StandupFormView()
+    MainActor.assumeIsolated {
+        NavigationStack {
+            StandupFormView(store: Store(initialState: StandupFormFeature.State(standup: .mock)) {
+                StandupFormFeature()
+            }
+            )
+        }
     }
-  }
 }
