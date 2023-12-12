@@ -68,7 +68,7 @@ struct StandupFormView: View {
                 Section {
                     TextField("Title", text: viewStore.$standup.title)
                     HStack {
-                        Slider(value: viewStore.$standup.duration, in: 5...30, step: 1) {
+                        Slider(value: viewStore.$standup.duration.minutes, in: 5...30, step: 1) {
                             Text("Length")
                         }
                         Spacer()
