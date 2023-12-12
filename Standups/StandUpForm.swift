@@ -10,8 +10,8 @@ import SwiftUI
 
 struct StandupFormFeature: Reducer {
   struct State {
-      var focus: Field?
-      var standup: Standup
+      @BindingState var focus: Field?
+      @BindingState var standup: Standup
       
       enum Field: Hashable {
           case attendee(Attendee.ID)
@@ -26,7 +26,7 @@ struct StandupFormFeature: Reducer {
           }
       }
   }
-  enum Action {
+    enum Action: BindableAction {
       case addAttendeeButtonTapped
       case deleteAttendees(atOffsets: IndexSet)
       case setTitle(String)
