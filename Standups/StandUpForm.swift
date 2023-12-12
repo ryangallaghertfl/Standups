@@ -28,11 +28,10 @@ struct StandupFormFeature: Reducer {
   }
     enum Action: BindableAction {
       case addAttendeeButtonTapped
+      case binding(BindingAction<State>)
       case deleteAttendees(atOffsets: IndexSet)
-      case setTitle(String)
-      case setDuration(Duration)
-      case setTheme(Theme)
   }
+    
   var body: some ReducerOf<Self> {
     Reduce { state, action in
       switch action {
