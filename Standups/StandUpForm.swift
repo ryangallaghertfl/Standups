@@ -61,41 +61,47 @@ struct StandupFormFeature: Reducer {
 }
 
 struct StandupFormView: View {
-    let store: StoreOf<StandupFormFeature>
-    var body: some View {
-        WithViewStore(self.store, observe: {$0}) { viewStore in
-            Form {
-                Section {
-                    TextField("Title", text: viewStore.$standup.title)
-                    HStack {
-                        Slider(value: viewStore.$standup.duration.minutes, in: 5...30, step: 1) {
-                            Text("Length")
-                        }
-                        Spacer()
-                        Text(viewStore.standup.duration.formatted(.units()))
-                    }
-                    ThemePicker(selection: .bubblegum)
-                } header: {
-                    Text("Standup Info")
-                }
-                Section {
-                    ForEach(Attendee) { $attendee in
-                        TextField("Name", text: $attendee.name)
-                    }
-                    .onDelete { indices in
-                        //Do something
-                    }
-                    
-                    Button("Add attendee") {
-                        //Do something
-                    }
-                } header: {
-                    Text("Attendees")
-                }
+  let store: StoreOf<StandupFormFeature>
+  @FocusState var focus: StandupFormFeature.State.Field?
+
+  var body: some View {
+    WithViewStore(self.store, observe: { $0 }) { viewStore in
+      Form {
+        Section {
+          TextField("Title", text: viewStore.$standup.title)
+            .focused(self.$focus, equals: .title)
+          HStack {
+            Slider(value: viewStore.$standup.duration.minutes, in: 5...30, step: 1) {
+              Text("Length")
             }
+            Spacer()
+            Text(viewStore.standup.duration.formatted(.units()))
+          }
+          ThemePicker(selection: viewStore.$standup.theme)
+        } header: {
+          Text("Standup Info")
         }
+        Section {
+          ForEach(viewStore.$standup.attendees) { $attendee in
+            TextField("Name", text: $attendee.name)
+              .focused(self.$focus, equals: .attendee(attendee.id))
+          }
+          .onDelete { indices in
+            viewStore.send(.deleteAttendees(atOffsets: indices))
+          }
+          
+          Button("Add attendee") {
+            viewStore.send(.addAttendeeButtonTapped)
+          }
+        } header: {
+          Text("Attendees")
+        }
+      }
+      .bind(viewStore.$focus, to: self.$focus)
+    }
   }
 }
+
 
 extension Duration {
   fileprivate var minutes: Double {
