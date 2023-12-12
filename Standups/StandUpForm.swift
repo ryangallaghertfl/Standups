@@ -36,7 +36,13 @@ struct StandupFormFeature: Reducer {
       BindingReducer()
       Reduce { state, action in
           switch action {
-      }
+          case .addAttendeeButtonTapped:
+              <#code#>
+          case .binding(_):
+              return .none
+          case .deleteAttendees(atOffsets: let atOffsets):
+              <#code#>
+          }
     }
   }
 }
