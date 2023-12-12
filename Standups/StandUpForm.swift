@@ -72,7 +72,7 @@ struct StandupFormView: View {
                             Text("Length")
                         }
                         Spacer()
-                        Text("5 min")
+                        Text(viewStore.standup.duration.formatted(.units()))
                     }
                     ThemePicker(selection: .bubblegum)
                 } header: {
